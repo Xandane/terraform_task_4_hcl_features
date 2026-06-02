@@ -1,5 +1,6 @@
 resource "azurerm_virtual_machine" "main" {
-  name                  = "${var.prefix}-vm"
+  count = 3
+  name                  = "${var.prefix}-VMexample-${count.index}"
   location              = azurerm_resource_group.example[0].location
   resource_group_name   = azurerm_resource_group.example[0].name
   network_interface_ids = [values(azurerm_network_interface.main)[0].id]
