@@ -1,13 +1,12 @@
 
 
 output "vm_name_uppercase" {
-  value = upper(azurerm_virtual_machine.main.name)
+  value = upper(azurerm_virtual_machine.main[0].name)
 }
 
 
 output "tags_joined" {
-  value = join(", ", values(azurerm_virtual_machine.main.tags))
-
+  value = [for vm in azurerm_virtual_machine.main : vm.id]
 }
 
 
