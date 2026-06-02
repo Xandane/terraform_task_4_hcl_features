@@ -6,10 +6,10 @@ output "vm_name_uppercase" {
 
 
 output "tags_joined" {
-  value = join(", ", [for tag in azurerm_virtual_machine.main.tags : tag])
+  value = join(", ", [for k, v in azurerm_virtual_machine.main.tags : "${k}=${v}"])
 }
 
 
 output "vm_ids" {
-   value = azurerm_virtual_machine.main.id
+  value = [for vm in azurerm_virtual_machine.main : vm.id]
 }

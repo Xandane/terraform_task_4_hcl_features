@@ -2,7 +2,7 @@ resource "azurerm_virtual_machine" "main" {
   name                  = "${var.prefix}-vm"
   location              = azurerm_resource_group.example[0].location
   resource_group_name   = azurerm_resource_group.example[0].name
-  network_interface_ids = [ values(azurerm_network_interface.main)[0].id ]
+  network_interface_ids = [values(azurerm_network_interface.main)[0].id]
   vm_size               = "Standard_DS1_v2"
   lifecycle {
     prevent_destroy = true
