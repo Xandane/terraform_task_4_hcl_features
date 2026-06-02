@@ -11,5 +11,5 @@ output "tags_joined" {
 
 
 output "vm_ids" {
-  value = [for vm in azurerm_virtual_machine.main : vm.id]
+  value = azurerm_virtual_machine.main.id
 }
